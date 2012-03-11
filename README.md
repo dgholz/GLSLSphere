@@ -1,1 +1,1 @@
-(https://raw.github.com/dgholz/GLSLSphere/master/index.html)
+http://dgholz.githum.com/GLSLSphere/
