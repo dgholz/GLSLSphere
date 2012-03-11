@@ -1,1 +1,1 @@
-http://dgholz.githum.com/GLSLSphere/
+http://dgholz.github.com/GLSLSphere/
