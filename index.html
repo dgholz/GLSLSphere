@@ -56,7 +56,7 @@ vec3 mccool_rand(in float x, in float y, in float z) {
   return result.xyz;
 }
 
-vec3 rand(in vec3 p) {
+vec3 mccool_rand(in vec3 p) {
   return mccool_rand(p.x, p.y, p.z);
 }
 
@@ -126,10 +126,10 @@ float simplex_noise(vec3 point) {
   vec3 d2 = point - xyz2;
   vec3 d3 = point - xyz3;
 
-  vec3 gi0 = (rand(xyz0)-0.5)*2.0;
-  vec3 gi1 = (rand(xyz1)-0.5)*2.0;
-  vec3 gi2 = (rand(xyz2)-0.5)*2.0;
-  vec3 gi3 = (rand(xyz3)-0.5)*2.0;
+  vec3 gi0 = (mccool_rand(xyz0)-0.5)*2.0;
+  vec3 gi1 = (mccool_rand(xyz1)-0.5)*2.0;
+  vec3 gi2 = (mccool_rand(xyz2)-0.5)*2.0;
+  vec3 gi3 = (mccool_rand(xyz3)-0.5)*2.0;
   
   float n0 = fade(gi0, d0);
   float n1 = fade(gi1, d1);
