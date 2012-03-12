@@ -45,10 +45,9 @@ uniform mat4 modelViewMatrix;
 const float M_PI = 3.14159265358979323846;
 
 vec3 mccool_rand(in float x, in float y, in float z) {
-    return vec3(0.7, 0.3, 0.5); // sanity check
   vec4 a = vec4(pow(M_PI, 4.0), exp(4.0), pow(10.0, M_PI*0.5), sqrt(1997.0));
   vec4 result = vec4(x,y,z,1.0);
-  for(int i = 0; i < 3; i++) {
+  for(int i = 0; i < 5; i++) {
     result.x = fract(dot(result, a));
     result.y = fract(dot(result, a));
     result.z = fract(dot(result, a));
