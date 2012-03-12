@@ -174,9 +174,9 @@ void main(void) {
     simplex += simplex_noise(hit.xyz*pow(2.0,i))*pow(2.0,-i-1.0);
     if( i == harmonics ) { break; }
   }
-  if( hit.y > 0 ) {
+  if( hit.y > 0.0 ) {
     gl_FragColor = vec4(simplex,simplex,simplex,1.0);
-  } else if ( hit.x < 0 ) {
+  } else if ( hit.x < 0.0 ) {
     gl_FragColor = hit;
   } else {
     dl_FragColor = vec4(mccool_rand(hit.xyz), 1.0);
