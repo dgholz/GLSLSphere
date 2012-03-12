@@ -179,7 +179,7 @@ void main(void) {
   } else if ( hit.x < 0.0 ) {
     gl_FragColor = hit;
   } else {
-    dl_FragColor = vec4(mccool_rand(hit.xyz), 1.0);
+    gl_FragColor = vec4(mccool_rand(hit.xyz), 1.0);
   }
 }
 //]]>
