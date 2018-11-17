@@ -3,6 +3,9 @@ var camera, cameraControls;
 var material;
 var keyboard = new THREEx.KeyboardState();
 
+import vertex_shader from '../glsl/vertex.glsl';
+import fragment_shader from '../glsl/fragment.glsl';
+
 if( !init() )    animate();
 
 // init the scene
@@ -48,8 +51,6 @@ function init(){
         document.getElementById('inlineDoc').innerHTML    += "- <i>f</i> for fullscreen";
     }
 
-    var vertex_shader   = document.getElementById('vertex_shader').textContent;
-    var fragment_shader = document.getElementById('fragment_shader').textContent;
     var uniforms = {
         camera_pos: {
             type: 'v3',
