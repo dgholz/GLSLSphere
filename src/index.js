@@ -6,6 +6,8 @@ var keyboard = new THREEx.KeyboardState();
 import vertex_shader from '../glsl/vertex.glsl';
 import fragment_shader from '../glsl/fragment.glsl';
 
+import * as THREE from 'three';
+
 if( !init() )    animate();
 
 // init the scene
@@ -16,7 +18,7 @@ function init(){
             antialias        : true,    // to get smoother output
             preserveDrawingBuffer    : true    // to allow screenshot
         });
-        renderer.setClearColorHex( 0xA0FF3A, 1 );
+        renderer.setClearColor( 0xA0FF3A, 1 );
     }else{
         Detector.addGetWebGLMessage();
         return true;
