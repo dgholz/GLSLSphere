@@ -1,4 +1,7 @@
 module.exports = {
+  devServer: {
+    contentBase: './dist'
+  },
   module: {
     rules: [{
       test: /\.glsl$/,
