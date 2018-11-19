@@ -6,7 +6,8 @@ var keyboard = new THREEx.KeyboardState();
 import vertex_shader from '../glsl/vertex.glsl';
 import fragment_shader from '../glsl/fragment.glsl';
 
-import * as THREE from 'three';
+var THREE = require('three');
+window.THREE = THREE;
 
 if( !init() )    animate();
 
