@@ -113,7 +113,7 @@ vec4 intersect_ray_with_sphere(vec4 source, vec4 direction, vec4 sphere) {
 varying vec4 vertex; // cube vertex in model space
 uniform vec3 camera_pos;
 uniform float grain;
-uniform float harmony;
+uniform float harmonics;
 vec4 sphere = vec4(0.0,0.0,0.0,1.0);
 
 void main(void) {
@@ -129,7 +129,7 @@ void main(void) {
   float simplex = 0.0;
   for (float i = 0.0; i < 16.0; i++) {
     simplex += simplex_noise(hit.xyz*pow(2.0,i))*pow(2.0,-i-1.0);
-    if( i == harmony ) { break; }
+    if( i == harmonics ) { break; }
   }
   gl_FragColor = vec4(simplex,simplex,simplex,1.0);
 }
