@@ -30,7 +30,7 @@ jobs:
             PARENTS="${DEST_OID} -p ${PARENTS}"
           fi
           if [ -z "${DEST_OID}" -o "${OUTPUT_OBJECT}" != $(git rev-parse "${DEST_OID}"^{tree}) ]; then
-            git branch --force "${DEST_REF}" $( git commit-tree "${OUTPUT_OBJECT}" -p "${PARENTS}" -m "Autobuild from main@${GITHUB_SHA}" )
+            git branch --force "${DEST_REF}" $( git commit-tree "${OUTPUT_OBJECT}" -p ${PARENTS} -m "Autobuild from main@${GITHUB_SHA}" )
           fi
       - name: Publish branch
         run: git push origin "${DEST_REF}"
