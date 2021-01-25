@@ -1,0 +1,36 @@
+name: Automatically push Webpack output to GH Pages
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  publish:
+    name: Run Webpack & publish to GitHub Pages
+    runs-on: ubuntu-latest
+    env:
+      DEST_REF: gh-pages
+      WEBPACK_OUTPUT: dist
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set commiter details
+        run: |
+          git config user.name "$(git log -1 --pretty=format:%an)"
+          git config user.email "$(git log -1 --pretty=format:%ae)"
+      - name: Run Webpack
+        run: npm install --also=dev && npm run build
+      - name: Update branch
+        run: |
+          git --work-tree ${WEBPACK_OUTPUT} add .
+          OUTPUT_OBJECT=$(git write-tree)
+          PARENTS="${GITHUB_SHA}"
+          git fetch origin "${DEST_REF}"
+          DEST_OID=$(git rev-parse --verify --quiet FETCH_HEAD)
+          if [ -n "${DEST_OID}" ]; then
+            PARENTS="${DEST_OID} -p ${PARENTS}"
+          fi
+          if [ -z "${DEST_OID}" -o "${OUTPUT_OBJECT}" != $(git rev-parse "${DEST_OID}"^{tree}) ]; then
+            git branch --force "${DEST_REF}" $( git commit-tree "${OUTPUT_OBJECT}" -p "${PARENTS}" -m "Autobuild from main@${GITHUB_SHA}" )
+          fi
+      - name: Publish branch
+        run: git push origin "${DEST_REF}"
